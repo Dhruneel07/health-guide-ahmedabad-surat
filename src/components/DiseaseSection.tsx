@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Search, Heart, Pills, Medicine } from "lucide-react";
+import { Search, Heart, Pill, PillBottle } from "lucide-react";
 
 const diseases = [
   {
@@ -86,7 +86,7 @@ const DiseaseSection = () => {
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-semibold text-sm text-blue-600 flex items-center gap-1">
-                      <Medicine className="h-4 w-4" />
+                      <PillBottle className="h-4 w-4" />
                       Symptoms:
                     </h4>
                     <p className="text-sm text-gray-600 mt-1">{disease.symptoms}</p>
@@ -97,7 +97,7 @@ const DiseaseSection = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-sm text-blue-600 flex items-center gap-1">
-                      <Pills className="h-4 w-4" />
+                      <Pill className="h-4 w-4" />
                       Common Medicines:
                     </h4>
                     <p className="text-sm text-gray-600 mt-1">{disease.medicines}</p>
