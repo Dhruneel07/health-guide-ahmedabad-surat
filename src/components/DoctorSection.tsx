@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Stethoscope, Heart, Hospital } from "lucide-react";
+import { Stethoscope, Heart, Brain, Tooth, Eye } from "lucide-react";
 
 const doctors = {
   ahmedabad: {
@@ -14,15 +14,39 @@ const doctors = {
       { name: "Dr. Mehta", experience: "12 years", hospital: "Civil Hospital", contact: "+91 98765-43212" },
       { name: "Dr. Desai", experience: "18 years", hospital: "Apollo Hospital", contact: "+91 98765-43213" },
     ],
+    neurologist: [
+      { name: "Dr. Joshi", experience: "17 years", hospital: "Sterling Hospital", contact: "+91 98765-43214" },
+      { name: "Dr. Trivedi", experience: "14 years", hospital: "Civil Hospital", contact: "+91 98765-43215" },
+    ],
+    dentist: [
+      { name: "Dr. Sharma", experience: "10 years", hospital: "Dental Care Center", contact: "+91 98765-43216" },
+      { name: "Dr. Patel", experience: "13 years", hospital: "Smile Dental Clinic", contact: "+91 98765-43217" },
+    ],
+    ophthalmologist: [
+      { name: "Dr. Vyas", experience: "16 years", hospital: "Eye Care Hospital", contact: "+91 98765-43218" },
+      { name: "Dr. Modi", experience: "19 years", hospital: "Vision Care Center", contact: "+91 98765-43219" },
+    ],
   },
   surat: {
     cardiologist: [
-      { name: "Dr. Kumar", experience: "14 years", hospital: "New Civil Hospital", contact: "+91 98765-43214" },
-      { name: "Dr. Patel", experience: "16 years", hospital: "BAPS Hospital", contact: "+91 98765-43215" },
+      { name: "Dr. Kumar", experience: "14 years", hospital: "New Civil Hospital", contact: "+91 98765-43220" },
+      { name: "Dr. Patel", experience: "16 years", hospital: "BAPS Hospital", contact: "+91 98765-43221" },
     ],
     orthopedic: [
-      { name: "Dr. Singh", experience: "10 years", hospital: "Kiran Hospital", contact: "+91 98765-43216" },
-      { name: "Dr. Shah", experience: "22 years", hospital: "New Civil Hospital", contact: "+91 98765-43217" },
+      { name: "Dr. Singh", experience: "10 years", hospital: "Kiran Hospital", contact: "+91 98765-43222" },
+      { name: "Dr. Shah", experience: "22 years", hospital: "New Civil Hospital", contact: "+91 98765-43223" },
+    ],
+    neurologist: [
+      { name: "Dr. Desai", experience: "15 years", hospital: "BAPS Hospital", contact: "+91 98765-43224" },
+      { name: "Dr. Patel", experience: "18 years", hospital: "Kiran Hospital", contact: "+91 98765-43225" },
+    ],
+    dentist: [
+      { name: "Dr. Mehta", experience: "12 years", hospital: "Dental Excellence", contact: "+91 98765-43226" },
+      { name: "Dr. Shah", experience: "9 years", hospital: "Perfect Smile Clinic", contact: "+91 98765-43227" },
+    ],
+    ophthalmologist: [
+      { name: "Dr. Joshi", experience: "20 years", hospital: "Eye Institute", contact: "+91 98765-43228" },
+      { name: "Dr. Trivedi", experience: "15 years", hospital: "Vision Plus Center", contact: "+91 98765-43229" },
     ],
   },
 };
@@ -51,6 +75,12 @@ const DoctorSection = () => {
         return <Heart className="h-5 w-5 text-red-500" />;
       case "orthopedic":
         return <Stethoscope className="h-5 w-5 text-blue-500" />;
+      case "neurologist":
+        return <Brain className="h-5 w-5 text-purple-500" />;
+      case "dentist":
+        return <Tooth className="h-5 w-5 text-yellow-500" />;
+      case "ophthalmologist":
+        return <Eye className="h-5 w-5 text-green-500" />;
       default:
         return <Stethoscope className="h-5 w-5 text-blue-500" />;
     }
@@ -88,6 +118,9 @@ const DoctorSection = () => {
             <SelectContent>
               <SelectItem value="cardiologist">Cardiologist</SelectItem>
               <SelectItem value="orthopedic">Orthopedic</SelectItem>
+              <SelectItem value="neurologist">Neurologist</SelectItem>
+              <SelectItem value="dentist">Dentist</SelectItem>
+              <SelectItem value="ophthalmologist">Ophthalmologist</SelectItem>
             </SelectContent>
           </Select>
         </div>
