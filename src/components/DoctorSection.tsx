@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Stethoscope, Heart, Brain, Tooth, Eye } from "lucide-react";
+import { Stethoscope, Heart, Brain, Building2, Microscope } from "lucide-react";
 
 const doctors = {
   ahmedabad: {
@@ -78,9 +78,9 @@ const DoctorSection = () => {
       case "neurologist":
         return <Brain className="h-5 w-5 text-purple-500" />;
       case "dentist":
-        return <Tooth className="h-5 w-5 text-yellow-500" />;
+        return <Microscope className="h-5 w-5 text-yellow-500" />;
       case "ophthalmologist":
-        return <Eye className="h-5 w-5 text-green-500" />;
+        return <Microscope className="h-5 w-5 text-green-500" />;
       default:
         return <Stethoscope className="h-5 w-5 text-blue-500" />;
     }
@@ -142,7 +142,7 @@ const DoctorSection = () => {
                     <span className="font-medium">Experience:</span> {doctor.experience}
                   </p>
                   <p className="text-sm text-gray-600 flex items-center gap-2">
-                    <Hospital className="h-4 w-4 text-blue-500" />
+                    <Building2 className="h-4 w-4 text-blue-500" />
                     <span className="font-medium">Hospital:</span> {doctor.hospital}
                   </p>
                   <p className="text-sm text-blue-600 mt-2 font-medium">Contact: {doctor.contact}</p>
