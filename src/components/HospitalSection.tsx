@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -9,11 +8,17 @@ const hospitals = {
     { name: "Civil Hospital", address: "Asarwa, Ahmedabad", contact: "+91 79-22683721", specialities: "Multi-Specialty" },
     { name: "Sterling Hospital", address: "Sterling Hospital Road, Memnagar", contact: "+91 79-40011111", specialities: "Cardiac Care" },
     { name: "Apollo Hospital", address: "Near Bhat, Gandhinagar", contact: "+91 79-66701800", specialities: "Multi-Specialty" },
+    { name: "SAL Hospital", address: "Drive In Road, Ahmedabad", contact: "+91 79-40404141", specialities: "Multi-Specialty, Orthopedics" },
+    { name: "HCG Hospital", address: "Science City Road, Ahmedabad", contact: "+91 79-44000000", specialities: "Cancer Care" },
+    { name: "Zydus Hospital", address: "SG Highway, Ahmedabad", contact: "+91 79-71222222", specialities: "Multi-Specialty, Cardiac" },
   ],
   surat: [
     { name: "New Civil Hospital", address: "Majura Gate, Surat", contact: "+91 261-2244456", specialities: "General Medicine" },
     { name: "BAPS Hospital", address: "Adajan, Surat", contact: "+91 261-2781000", specialities: "Multi-Specialty" },
     { name: "Kiran Hospital", address: "Katargam, Surat", contact: "+91 261-6694444", specialities: "Cardiac & Cancer Care" },
+    { name: "Apple Hospital", address: "Varachha Road, Surat", contact: "+91 261-2547888", specialities: "Multi-Specialty" },
+    { name: "Mahavir Hospital", address: "Ring Road, Surat", contact: "+91 261-2358999", specialities: "Orthopedics & Trauma" },
+    { name: "Unity Hospital", address: "City Light Road, Surat", contact: "+91 261-2369777", specialities: "Multi-Specialty, Neurology" },
   ]
 };
 
