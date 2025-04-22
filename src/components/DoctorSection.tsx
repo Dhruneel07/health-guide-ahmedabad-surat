@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Stethoscope, Heart, Hospital } from "lucide-react";
@@ -30,6 +30,20 @@ const doctors = {
 const DoctorSection = () => {
   const [selectedCity, setSelectedCity] = useState("ahmedabad");
   const [selectedSpeciality, setSelectedSpeciality] = useState("cardiologist");
+  const [selectedDoctors, setSelectedDoctors] = useState<any[]>([]);
+
+  // Update the selected doctors whenever city or speciality changes
+  useEffect(() => {
+    if (doctors[selectedCity as keyof typeof doctors] && 
+        doctors[selectedCity as keyof typeof doctors][selectedSpeciality as keyof typeof doctors.ahmedabad]) {
+      setSelectedDoctors(doctors[selectedCity as keyof typeof doctors][selectedSpeciality as keyof typeof doctors.ahmedabad]);
+    } else {
+      setSelectedDoctors([]);
+    }
+    
+    console.log("Updated doctors:", selectedCity, selectedSpeciality, 
+      doctors[selectedCity as keyof typeof doctors][selectedSpeciality as keyof typeof doctors.ahmedabad]);
+  }, [selectedCity, selectedSpeciality]);
 
   const getSpecialityIcon = (speciality: string) => {
     switch (speciality) {
@@ -80,28 +94,34 @@ const DoctorSection = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {doctors[selectedCity as keyof typeof doctors][selectedSpeciality as keyof typeof doctors.ahmedabad].map((doctor) => (
-          <Card key={doctor.name} className="hover:shadow-lg transition-shadow border-l-4 border-l-blue-500">
-            <CardHeader className="pb-2">
-              <div className="flex items-center gap-2">
-                {getSpecialityIcon(selectedSpeciality)}
-                <CardTitle className="text-lg">{doctor.name}</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2">
-                <p className="text-sm text-gray-600 flex items-center gap-2">
-                  <span className="font-medium">Experience:</span> {doctor.experience}
-                </p>
-                <p className="text-sm text-gray-600 flex items-center gap-2">
-                  <Hospital className="h-4 w-4 text-blue-500" />
-                  <span className="font-medium">Hospital:</span> {doctor.hospital}
-                </p>
-                <p className="text-sm text-blue-600 mt-2 font-medium">Contact: {doctor.contact}</p>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+        {selectedDoctors.length > 0 ? (
+          selectedDoctors.map((doctor) => (
+            <Card key={doctor.name + doctor.hospital} className="hover:shadow-lg transition-shadow border-l-4 border-l-blue-500">
+              <CardHeader className="pb-2">
+                <div className="flex items-center gap-2">
+                  {getSpecialityIcon(selectedSpeciality)}
+                  <CardTitle className="text-lg">{doctor.name}</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-2">
+                  <p className="text-sm text-gray-600 flex items-center gap-2">
+                    <span className="font-medium">Experience:</span> {doctor.experience}
+                  </p>
+                  <p className="text-sm text-gray-600 flex items-center gap-2">
+                    <Hospital className="h-4 w-4 text-blue-500" />
+                    <span className="font-medium">Hospital:</span> {doctor.hospital}
+                  </p>
+                  <p className="text-sm text-blue-600 mt-2 font-medium">Contact: {doctor.contact}</p>
+                </div>
+              </CardContent>
+            </Card>
+          ))
+        ) : (
+          <div className="col-span-full text-center py-8 text-gray-500">
+            No doctors found for the selected criteria
+          </div>
+        )}
       </div>
     </div>
   );
